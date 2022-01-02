@@ -8,27 +8,27 @@
 
 	.login-container {
 		width: 400px;
-		height: 100%;
-		margin: 0 auto;
+		height: auto;
+		// margin: 0 auto;
 		background-color: #fff;
 		border-radius: 20px;
 
 		.login-content {
-			padding: 10px;
+			padding: 10px 20px;
 			&-title {
 				font-weight: 600;
 			}
 			&-input {
 				margin: 8px 0;
-				padding: 10px;
+				padding: 6px 10px;
 			}
 			&-btn-login {
 				width: 100%;
 				margin: 10px 0;
-				padding: 8px 0;
+				padding: 4px 0;
 				border-radius: 20px;
 				outline: none;
-				font-size: 20px;
+				font-size: 18px;
 				border: none;
 				background: linear-gradient(
 					90deg,
@@ -38,11 +38,24 @@
 				color: #fff;
 				font-weight: 600;
 			}
+			.custom-input-password {
+				position: relative;
+				.input-eye {
+					position: absolute;
+					right: 8px;
+					top: 50%;
+					transform: translateY(-50%);
+					cursor: pointer;
+				}
+			}
 			&-forgot-password {
 				font-size: 12px;
 				opacity: 0.8;
 			}
 			&-social-login {
+				i {
+					cursor: pointer;
+				}
 				.google {
 					font-size: 30px;
 					background-color: #e12612ed;

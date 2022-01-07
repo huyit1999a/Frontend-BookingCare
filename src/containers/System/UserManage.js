@@ -5,10 +5,12 @@ import './UserManage.scss';
 import {
 	getAllUsers,
 	createNewUserService,
+	updateUserService,
 	deleteUserService,
 } from '../../services/userService';
 import { emitter } from '../../utils/emitter';
 import ModalUser from './ModalUser';
+import ModalUpdateUser from './ModalUpdateUser';
 
 class UserManage extends Component {
 	constructor(props) {
@@ -16,6 +18,8 @@ class UserManage extends Component {
 		this.state = {
 			arrUsers: [],
 			isOpenModalUser: false,
+			isOpenModalUpdateUser: false,
+			userUpdate: {},
 		};
 	}
 
@@ -44,6 +48,12 @@ class UserManage extends Component {
 		});
 	};
 
+	toggleUserUpdateModal = () => {
+		this.setState({
+			isOpenModalUpdateUser: !this.state.isOpenModalUpdateUser,
+		});
+	};
+
 	createNewUser = async (data) => {
 		try {
 			let response = await createNewUserService(data);
@@ -60,6 +70,30 @@ class UserManage extends Component {
 		} catch (err) {
 			console.log(err);
 		}
+	};
+
+	updateUser = async (user) => {
+		try {
+			let response = await updateUserService(user);
+
+			if (response && response.errCode !== 0) {
+				alert(response.errMessage);
+			} else {
+				await this.getAllUsers();
+				this.setState({
+					isOpenModalUpdateUser: false,
+				});
+			}
+		} catch (err) {
+			console.log(err);
+		}
+	};
+
+	handleUpdateUser = async (user) => {
+		this.setState({
+			isOpenModalUpdateUser: true,
+			userUpdate: user,
+		});
 	};
 
 	handleDeleteUser = async (user) => {
@@ -84,6 +118,14 @@ class UserManage extends Component {
 					toggleFromParent={this.toggleUserModal}
 					createNewUser={this.createNewUser}
 				/>
+				{this.state.isOpenModalUpdateUser && (
+					<ModalUpdateUser
+						isOpen={this.state.isOpenModalUpdateUser}
+						toggleFromParent={this.toggleUserUpdateModal}
+						currentUser={this.state.userUpdate}
+						updateUser={this.updateUser}
+					/>
+				)}
 				<div className="title text-center">Manage users</div>
 				<div className="mx-1">
 					<button
@@ -114,7 +156,14 @@ class UserManage extends Component {
 											<td>{item.lastName}</td>
 											<td>{item.address}</td>
 											<td>
-												<button className="btn-edit">
+												<button
+													className="btn-edit"
+													onClick={() => {
+														this.handleUpdateUser(
+															item
+														);
+													}}
+												>
 													<i className="fas fa-pencil-alt"></i>
 												</button>
 												<button

@@ -1,7 +1,7 @@
 .home-header-container {
-	height: 60px;
+	height: 72px;
 	width: 100%;
-	padding: 0 20px;
+	padding: 0 40px;
 
 	.home-header-content {
 		width: 100%;
@@ -11,9 +11,8 @@
 			width: 25%;
 
 			.header-logo {
-				background: url('../../assets/logo.svg') center center no-repeat;
-				height: 100%;
-				width: 100%;
+				height: 40px;
+				width: 160px;
 				cursor: pointer;
 			}
 
@@ -21,6 +20,7 @@
 				font-size: 25px;
 				color: grey;
 				cursor: pointer;
+				margin-right: 16px;
 			}
 		}
 
@@ -43,6 +43,176 @@
 			display: flex;
 			justify-content: center;
 			align-items: center;
+			.support {
+				padding-right: 50px;
+				i {
+					color: #45c3d2;
+					margin-right: 4px;
+				}
+				span {
+					color: #9696ad;
+					font-weight: bold;
+				}
+			}
+			.language-vi {
+				cursor: pointer;
+
+				&.active {
+					color: orange;
+				}
+			}
+			.language-en {
+				cursor: pointer;
+				margin: 0 10px;
+				&.active {
+					color: orange;
+				}
+			}
+		}
+	}
+}
+
+.home-header-banner {
+	background: url('../../assets/header-background.jpg');
+	height: 100vh;
+	max-height: 520px;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	display: flex;
+	flex-direction: column;
+
+	.content-up {
+		background-image: linear-gradient(
+			rgba(0, 0, 0, 0.25),
+			rgba(255, 255, 255, 0.1)
+		);
+		padding-top: 15px;
+		min-height: 60vh;
+
+		.title1 {
+			text-align: center;
+			font-size: 30px;
+			text-shadow: 1px 1px 1px #333;
+			margin-bottom: 5px;
+			color: #fff;
+			margin-top: 30px;
+		}
+
+		.title2 {
+			text-align: center;
+			font-size: 30px;
+			text-shadow: 1px 1px 1px #333;
+			margin-bottom: 15px;
+			color: #fff;
+		}
+
+		.search {
+			width: fit-content;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			margin: 0 auto;
+			padding: 10px;
+			border-radius: 25px;
+			background: #f7d800;
+			i {
+				margin: 0 5px;
+			}
+
+			input {
+				height: 30px;
+				width: 360px;
+				border: none;
+				background: transparent;
+				outline: none;
+			}
+		}
+		&-icon {
+			display: flex;
+			justify-content: center;
+			margin: 72px 0 85px;
+			height: 60px;
+			.bg-icon {
+				width: 108px;
+				height: 32px;
+
+				cursor: pointer;
+			}
+			.ch-play {
+				background: url('../../assets/google-play.svg') center center
+					no-repeat;
+				background-size: cover;
+				margin-right: 20px;
+			}
+			.app-store {
+				background: url('../../assets/app-store.svg') center center
+					no-repeat;
+				background-size: cover;
+			}
+		}
+	}
+
+	.content-down {
+		.options {
+			text-align: center;
+			display: flex;
+			justify-content: center;
+			flex-wrap: wrap;
+			gap: 40px;
+			background-image: linear-gradient(
+				rgba(255, 255, 255, 0.1),
+				rgba(255, 255, 255, 0.9),
+				rgba(255, 255, 255, 1)
+			);
+		}
+
+		.option-child {
+			max-width: 120px;
+			text-align: center;
+
+			.bg-image {
+				background: #fff;
+				background-size: 32px;
+				background-repeat: no-repeat;
+				background-position: center;
+				width: 50px;
+				height: 50px;
+				border-radius: 50%;
+				margin: 0 auto;
+			}
+			.cursor-pointer {
+				cursor: pointer;
+			}
+			.icon-child {
+				&-chuyenkhoa {
+					background-image: url('../../assets/khamchuyenkhoa.png');
+				}
+				&-tuxa {
+					background-image: url('../../assets/khamtuxa.png');
+				}
+				&-tongquat {
+					background-image: url('../../assets/khamtongquat.png');
+				}
+				&-xnyh {
+					background-image: url('../../assets/dichvuxetnghiem.png');
+				}
+				&-sktt {
+					background-image: url('../../assets/suckhoetinhthan.png');
+				}
+				&-nk {
+					background-image: url('../../assets/khamchuyenkhoa.png');
+				}
+			}
+			.text-child {
+				font-size: 17px;
+				font-weight: bold;
+				color: #333;
+				cursor: pointer;
+				&:hover {
+					color: #49bce2;
+				}
+			}
 		}
 	}
 }
